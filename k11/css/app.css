@@ -1,0 +1,116 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	color: #444;
+}
+
+a {
+	cursor: pointer;
+}
+
+.u-invis {
+	visibility: hidden;
+}
+
+.u-center-text {
+	text-align: center;	
+}
+
+
+.u-button-group button {
+	margin-left: 10px;
+}
+
+.u-button-group button:first-child {
+	margin-left: 0;	
+}
+
+
+
+/******/
+
+.banner {
+	margin: 10px 0;
+}
+
+.banner-menu {
+	position: absolute;
+	right: 0;
+}
+
+
+/*******/
+
+.nav {
+	list-style: none;
+	display: table;	
+	width: 100%
+}
+
+.nav-link {
+	display: table-cell;
+	background: #EEEEEE;
+	width: 20%;
+	padding: 10px 0;
+	text-align: center;	
+}
+
+.nav-link-active {
+	background: #DDDDDD;
+	width: 60%
+}
+
+
+/********/
+
+.grid-container {
+	margin: 0 auto;
+}
+
+.grid-box {	
+	position: relative;
+    width: 192px;
+    height: 192px;
+    padding: 5px;
+    float:left;
+    -webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
+  	user-select: none;
+}
+
+.grid-box img {
+	width:100%;
+	height:100%;
+}
+
+.grid-box-spin-circle {
+	line-height: 192px;
+}
+
+.grid-box-overlay {
+	position: absolute;
+	color: #999;
+	padding: 10px;
+	width: 182px;
+	height: 182px;
+	background: rgba(255, 255, 255, 0.8)
+}
+
+.grid-caret {
+	font-size: 50px;
+	color: #444;
+}
+
+.grid-box-lock {
+	color: red;
+	font-weight: 800;
+}
+
+
+/*******/
+.login-form-footer {
+	margin-top: 25px;
+}
