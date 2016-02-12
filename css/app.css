@@ -20,7 +20,7 @@ a {
 
 
 .u-button-group button {
-	margin-left: 10px;
+	margin-left: 1rem;
 }
 
 .u-button-group button:first-child {
@@ -31,13 +31,10 @@ a {
 
 /******/
 
-.banner {
-	margin: 10px 0;
-}
-
 .banner-menu {
 	position: absolute;
 	right: 0;
+	top: 1rem;
 }
 
 
@@ -50,15 +47,17 @@ a {
 }
 
 .nav-link {
+	color: #444;
 	display: table-cell;
-	background: #EEEEEE;
 	width: 20%;
-	padding: 10px 0;
+	padding: 1rem 0;
 	text-align: center;	
+	text-decoration: none;
 }
 
 .nav-link-active {
-	background: #DDDDDD;
+	background: #444;
+	color: #FFF;
 	width: 60%
 }
 
@@ -69,14 +68,14 @@ a {
 	margin: 0 auto;
 	position: relative;
 	z-index: 0;
-	width: 600px;
+	width: 60rem
 }
 
 .grid-box {	
 	position: relative;
-    width: 200px;
-    height: 200px;
-    padding: 5px;
+    width: 20rem;
+    height: 20rem;
+    padding: 0.5rem;
     float:left;
     -webkit-user-select: none;
   	-moz-user-select: none;
@@ -90,7 +89,7 @@ a {
 }
 
 .grid-box-spin-circle {
-	line-height: 200px;
+	line-height: 20rem;
 }
 
 .grid-box:hover .grid-box-overlay {
@@ -99,22 +98,17 @@ a {
 
 .grid-box-overlay {
 	position: absolute;
-	top: 5px;
+	top: 0.5rem;
 	color: #EEE;
-	padding: 10px;
-	width: 190px;
-	height: 190px;	
+	padding: 1rem;
+	width: 19rem;
+	height: 19rem;	
 	z-index: 1;
 }
 
 .grid-caret {
-	font-size: 50px;
+	font-size: 5rem;
 	color: #444;
-}
-
-.grid-box-lock {
-	color: red;
-	font-weight: 800;
 }
 
 
@@ -122,12 +116,26 @@ a {
 
 .login-form-close {
 	position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
     color: #444;
 }
 
 .login-form-footer {
-	margin-top: 25px;
+	margin-top: 2rem;
+}
+
+
+/**********/
+
+.register-form-container,
+.invitation-form-container {
+	width: 30rem;
+	margin: 2rem auto 0 auto;	
+}
+
+.login-dialog-container {
+	width: 30rem;
+	margin: 0 auto;	
 }
