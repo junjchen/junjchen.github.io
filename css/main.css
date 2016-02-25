@@ -59,9 +59,9 @@ a, a:hover {
 .grid-box {	
 	position: relative;    
     float:left;
-  	margin: 3px;
-    width: 250px;
-    height: 250px;
+  	margin: 10px;
+    width: 285px;
+    height: 285px;
   	-webkit-user-select: none;
   	   -moz-user-select: none;
   	    -ms-user-select: none;
