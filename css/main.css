@@ -32,7 +32,9 @@ html {
   box-sizing: border-box;  
 }
 body {
+    background-color: #e0e0e0;
 	color: #000;
+    font-size: 14px;
     font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;    
 }
 *, *:before, *:after {
@@ -348,6 +350,92 @@ a, a:hover {
 }
 .app-container {
 	margin-bottom: 150px;
-	max-width: 1018px;
-	width: 1018px;
+	max-width: 1200px;
+	width: 1200px;
+}
+.abstract {
+    width: 742px;   
+    border: 1px black solid;
+}
+.abstract-heading {
+    position: relative;
+    padding: 30px 20px 0;
+    height: 128px;
+    border-bottom: 1px black solid;
+}
+.abstract-title {
+    width: 70%;    
+}
+.abstract-title-name {
+    margin: 0 250px 0 0;
+    font-size: 24px;
+}
+.abstract-author {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    border-left: 1px solid black;
+    line-height: 128px;    
+}
+.abstract-author-name {
+    font-size: 16px;
+}
+.abstract-author-img {    
+    margin: 0 0 0 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    vertical-align: middle;    
+}
+.abstract-content {
+    padding: 0 40px;
+}
+.abstract-image {
+    margin: 38px 0;
+    width: 662px;
+    height: 266px;
+}
+.abstract-desc {
+    margin: 0 0 38px 0;
+}
+.abstract-meta {
+    margin: 0 0 56px 0;
+}
+.abstract-reply,
+.abstract-likes {
+    margin: 0 20px;   
+}
+.abstract-likes .fa {
+    margin: 0 10px 0 0;
+}
+.card {
+    position: relative;
+    width: 204px;
+    border: 1px solid black;
+}
+.card-author-image {
+    position: absolute;
+    right: 5px;
+    bottom: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.card-timestamp {
+    padding: 5px 5px 0;
+    font-size: 11px;
+}
+.card-title {
+    padding: 0 5px 2px 5px;
+    font-size: 11px;
+}
+.card-category {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 26px;
+    background: #86754d;
+    color: white;
 }
