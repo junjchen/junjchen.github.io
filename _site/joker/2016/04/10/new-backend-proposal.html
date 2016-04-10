@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>之前后台存在的问题</title>
-  <meta name="description" content="代码">
+  <title>新后台架构的提议</title>
+  <meta name="description" content="背景  原先的后台必须整个弃用  joker项目已经进展了一年有余，目前到了需要出产品的关键时刻，产品进度很紧  多次后台调整对手机端的适配肯定不是好事，因为每一次调整势必意味着手机端做出一次适配">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/joker/2016/04/10/issues-in-old-api.html">
+  <link rel="canonical" href="http://yourdomain.com/joker/2016/04/10/new-backend-proposal.html">
   <link rel="alternate" type="application/rss+xml" title="Happier" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -53,53 +53,67 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">之前后台存在的问题</h1>
+    <h1 class="post-title" itemprop="name headline">新后台架构的提议</h1>
     <p class="post-meta"><time datetime="2016-04-10T00:00:00+08:00" itemprop="datePublished">Apr 10, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h3 id="section">代码</h3>
-
+    <h3 id="section">背景</h3>
 <ul>
-  <li>
-    <p>代码是根据一个其他项目修改的，存在大量冗余代码，可维护性差 <img src="/assets/joker/copied-codes.png" alt="其他项目代码" /></p>
+  <li>原先的后台必须整个弃用</li>
+  <li>joker项目已经进展了一年有余，目前到了需要出产品的关键时刻，产品进度很紧</li>
+  <li>多次后台调整对手机端的适配肯定不是好事，因为每一次调整势必意味着手机端做出一次适配</li>
+</ul>
+
+<h3 id="section-1">目标</h3>
+<ul>
+  <li>后台需要尽快搭建完成</li>
+  <li>接口需要尽可能健壮和完整，能适应app业务变动</li>
+  <li>定义接口文档（原先接口文档也很混乱）－－ TODO: 之后自动化测试接口</li>
+</ul>
+
+<h3 id="section-2">提议方向</h3>
+
+<h4 id="saas">1. 新浪云(SaaS云)</h4>
+<ul>
+  <li>优点
+    <ol>
+      <li>灵活 可以选择自己的 DB，Server等</li>
+      <li>易于迁移到其他服务提供商（迁移到阿里云或百度云）</li>
+      <li>价格相交Baas更低</li>
+    </ol>
   </li>
-  <li>
-    <p>代码格式无规范，有许多代码块重复，异常没有处理 <img src="/assets/joker/repetitive-codes.png" alt="重复代码" /></p>
-  </li>
-  <li>
-    <p>DAO层实现没有使用ORM框架，而是使用jdbcTemplate搞定CRUD，极难维护（以及图中重复代码） <img src="/assets/joker/no-orm.png" alt="没有ORM" /></p>
+  <li>缺点
+    <ol>
+      <li>开发周期长</li>
+      <li>许多基础功能（REST接口，登陆／安全 等）需要从头实现和考虑</li>
+      <li>需要自己定义文档</li>
+    </ol>
   </li>
 </ul>
 
-<h3 id="section-1">数据库</h3>
-
+<h4 id="leancloudbaashttpsleancloudcn">2. <a href="https://leancloud.cn/">LeanCloud(BaaS云)</a></h4>
 <ul>
-  <li>
-    <p>命名无规范（图中其实是游戏的数据表） <img src="/assets/joker/db-naming.png" alt="命名无规范" /></p>
+  <li>优点
+    <ol>
+      <li>专门为了手机app提供的后台＋存储＋消息服务解决方案</li>
+      <li>封装了大量通用的逻辑（数据访问，登陆注册，备份等）</li>
+      <li>文档齐全</li>
+    </ol>
   </li>
-  <li>
-    <p>由于Sinaapp欠费无法看到数据库，但我怀疑有许多不相关数据都存在数据库中（指那个其他项目的数据）</p>
-  </li>
-  <li>
-    <p>没有仔细看遍sql，不过似乎外键和index都无定义（图中AUTHOR应定义与作者表相连的外键） <img src="/assets/joker/db-foreign-key.png" alt="数据表定义" /></p>
-  </li>
-  <li>
-    <p>数据表结构混乱，扩展困难</p>
+  <li>缺点
+    <ol>
+      <li>迁徙到其他服务商比较复杂</li>
+      <li><em>价格较Saas略高</em>（但我比较了两者价格模型 发现其实并没有差距）</li>
+    </ol>
   </li>
 </ul>
 
-<h3 id="section-2">传输</h3>
+<h3 id="section-3">选择</h3>
+<p>就我而言我支持将后台搬到Leancloud上，好处是重新搭建后台的进度将大大加快，只需要定义了数据模型，所有接口都会自动生成。
+  另Leancloud提供的消息／推送等功能也很实用，将会大大降低后台开发和维护的成本。</p>
 
-<ul>
-  <li>HTTP传输明文账号密码，不安全</li>
-</ul>
-
-<h3 id="section-3">接口定义</h3>
-
-<ul>
-  <li>接口不完整（目前定义的所有借口，明显不足） <img src="/assets/joker/all-apis.png" alt="所有接口" /></li>
-</ul>
+<p>唯一值得注意的风险是如果Leancloud停止服务（今年初Facebook宣布将会关停旗下一个类似的服务Parse，但将会继续服务1年的时间供开发者迁徙，并给出了迁徙工具和文档）将会有类似迁徙的成本，但个人的观察而言目前Leanckoud活跃度和用户数都良好</p>
 
   </div>
 
