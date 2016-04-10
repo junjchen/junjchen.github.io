@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My bits</title>
-    <description>Just trying to setup my first jekyll site
-</description>
+    <title>正常人丁丁</title>
+    <description>正常人的非常故事</description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 09 Apr 2016 21:52:17 +0800</pubDate>
-    <lastBuildDate>Sat, 09 Apr 2016 21:52:17 +0800</lastBuildDate>
+    <pubDate>Sun, 10 Apr 2016 13:20:37 +0800</pubDate>
+    <lastBuildDate>Sun, 10 Apr 2016 13:20:37 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
