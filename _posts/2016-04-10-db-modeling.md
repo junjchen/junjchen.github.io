@@ -4,7 +4,13 @@ title:  "joker数据建模"
 categories: joker
 ---
 
-## 电影 Movie
+* [电影](#movie)
+* [电视剧](#tv-series)
+* [动画](#animation)
+* [游戏](#game)
+* [人物](#person)
+
+## <a name="movie"></a>电影 Movie
 
 Column | Explain | Type | Required | Default
 --- | --- | --- | --- | ---
@@ -29,7 +35,7 @@ _Trailer | 预告片 | `String` | No
 _Types | 类型 | `Array[String]` | No
 _Writer | 编剧 | `Array[*Person]` | No 
 
-## 电视剧 TVSeris
+## <a name="tv-series"></a>电视剧 TVSeries
 
 Column | Explain | Type | Required | Default
 --- | --- | --- | --- | ---
@@ -53,7 +59,7 @@ _Trailer | 预告片 | `String` | No
 _Types | 类型 | `Array[String]` | No
 _Writer | 编剧 | `Array[*Person]` | No
 
-## 动画 Animation
+## <a name="animation"></a>动画 Animation
 
 Column | Explain | Type | Required | Default
 --- | --- | --- | --- | ---
@@ -77,7 +83,7 @@ _Trailer | 预告片 | `String` | No
 _Types | 类型 | `Array[String]` | No
 _Writer | 脚本 | `Array[*Person]` | No
 
-## 游戏 Game
+## <a name="game"></a>游戏 Game
  
 Column | Explain | Type | Required | Default
 --- | --- | --- | --- | ---
@@ -95,7 +101,7 @@ _Scores | 评分 | `Object{"fami": Number, "ign": Number, "gs": Number, "joker":
 _Trailer | 预告片 | `String` | No
 _Types | 类型 | `Array[String]` | No
 
-## 人物 Person
+## <a name="person"></a>人物 Person
 
 Column | Explain | Type | Required | Default
 --- | --- | --- | --- | ---
