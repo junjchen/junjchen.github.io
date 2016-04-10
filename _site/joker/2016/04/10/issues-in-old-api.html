@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Happier</title>
-  <meta name="description" content="Still roaming">
+  <title>之前后台存在的问题</title>
+  <meta name="description" content="代码">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/">
+  <link rel="canonical" href="http://yourdomain.com/joker/2016/04/10/issues-in-old-api.html">
   <link rel="alternate" type="application/rss+xml" title="Happier" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -54,33 +54,60 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">之前后台存在的问题</h1>
+    <p class="post-meta"><time datetime="2016-04-10T00:00:00+08:00" itemprop="datePublished">Apr 10, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 10, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <h3 id="section">代码</h3>
 
-        <h2>
-          <a class="post-link" href="/joker/2016/04/10/issues-in-old-api.html">之前后台存在的问题</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 9, 2016</span>
+<ul>
+  <li>
+    <p>代码是根据一个其他项目修改的，存在大量冗余代码，可维护性差 <img src="/assets/joker/copied-codes.png" alt="其他项目代码" /></p>
+  </li>
+  <li>
+    <p>代码格式无规范，有许多代码块重复，异常没有处理 <img src="/assets/joker/repetitive-codes.png" alt="重复代码" /></p>
+  </li>
+  <li>
+    <p>DAO层实现没有使用ORM框架，而是使用jdbcTemplate搞定CRUD，极难维护（以及图中重复代码） <img src="/assets/joker/no-orm.png" alt="没有ORM" /></p>
+  </li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/04/09/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<h3 id="section-1">数据库</h3>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<ul>
+  <li>
+    <p>命名无规范（图中其实是游戏的数据表） <img src="/assets/joker/db-naming.png" alt="命名无规范" /></p>
+  </li>
+  <li>
+    <p>由于Sinaapp欠费无法看到数据库，但我怀疑有许多不相关数据都存在数据库中（指那个其他项目的数据）</p>
+  </li>
+  <li>
+    <p>没有仔细看遍sql，不过似乎外键和index都无定义（图中AUTHOR应定义与作者表相连的外键） <img src="/assets/joker/db-foreign-key.png" alt="数据表定义" /></p>
+  </li>
+  <li>
+    <p>数据表结构混乱，扩展困难</p>
+  </li>
+</ul>
 
-</div>
+<h3 id="section-2">传输</h3>
+
+<ul>
+  <li>HTTP传输明文账号密码，不安全</li>
+</ul>
+
+<h3 id="section-3">接口定义</h3>
+
+<ul>
+  <li>接口不完整（目前定义的所有借口，明显不足） <img src="/assets/joker/all-apis.png" alt="所有接口" /></li>
+</ul>
+
+  </div>
+
+</article>
 
       </div>
     </div>

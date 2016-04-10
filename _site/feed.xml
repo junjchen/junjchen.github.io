@@ -5,9 +5,63 @@
     <description>Still roaming</description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Apr 2016 13:26:54 +0800</pubDate>
-    <lastBuildDate>Sun, 10 Apr 2016 13:26:54 +0800</lastBuildDate>
+    <pubDate>Sun, 10 Apr 2016 15:28:38 +0800</pubDate>
+    <lastBuildDate>Sun, 10 Apr 2016 15:28:38 +0800</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>之前后台存在的问题</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;代码&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;代码是根据一个其他项目修改的，存在大量冗余代码，可维护性差 &lt;img src=&quot;/assets/joker/copied-codes.png&quot; alt=&quot;其他项目代码&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;代码格式无规范，有许多代码块重复，异常没有处理 &lt;img src=&quot;/assets/joker/repetitive-codes.png&quot; alt=&quot;重复代码&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DAO层实现没有使用ORM框架，而是使用jdbcTemplate搞定CRUD，极难维护（以及图中重复代码） &lt;img src=&quot;/assets/joker/no-orm.png&quot; alt=&quot;没有ORM&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;数据库&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;命名无规范（图中其实是游戏的数据表） &lt;img src=&quot;/assets/joker/db-naming.png&quot; alt=&quot;命名无规范&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;由于Sinaapp欠费无法看到数据库，但我怀疑有许多不相关数据都存在数据库中（指那个其他项目的数据）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;没有仔细看遍sql，不过似乎外键和index都无定义（图中AUTHOR应定义与作者表相连的外键） &lt;img src=&quot;/assets/joker/db-foreign-key.png&quot; alt=&quot;数据表定义&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;数据表结构混乱，扩展困难&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;传输&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTTP传输明文账号密码，不安全&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;接口定义&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;接口不完整（目前定义的所有借口，明显不足） &lt;img src=&quot;/assets/joker/all-apis.png&quot; alt=&quot;所有接口&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 10 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://yourdomain.com/joker/2016/04/10/issues-in-old-api.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/joker/2016/04/10/issues-in-old-api.html</guid>
+        
+        
+        <category>joker</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
