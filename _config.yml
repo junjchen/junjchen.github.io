@@ -16,3 +16,5 @@ github_username: junjchen
 
 # Build settings
 markdown: kramdown
+
+exclude: [vendor]
