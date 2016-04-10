@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>joker数据建模</title>
-  <meta name="description" content="  电影  电视剧  动画  游戏  人物">
+  <meta name="description" content="  对象(对电影，电视剧，动画和游戏的一层抽象，记录一些公共属性，并用来关联评论)  电影  电视剧  动画  游戏  人物  用户  评论">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://yourdomain.com/joker/2016/04/10/db-modeling.html">
@@ -59,12 +59,80 @@
 
   <div class="post-content" itemprop="articleBody">
     <ul>
+  <li><a href="#Item">对象(对电影，电视剧，动画和游戏的一层抽象，记录一些公共属性，并用来关联评论)</a></li>
   <li><a href="#movie">电影</a></li>
   <li><a href="#tv-series">电视剧</a></li>
   <li><a href="#animation">动画</a></li>
   <li><a href="#game">游戏</a></li>
   <li><a href="#person">人物</a></li>
+  <li><a href="#user">用户</a></li>
+  <li><a href="#comment">评论</a></li>
 </ul>
+
+<h2 id="a-nameitema-item"><a name="item"></a>对象 Item</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Explain</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>_ChineseName</td>
+      <td>中文名</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>Yes</td>
+      <td>null</td>
+    </tr>
+    <tr>
+      <td>_CoverPicture</td>
+      <td>封面图</td>
+      <td><code class="highlighter-rouge">*File</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_Description</td>
+      <td>描述</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_EnglishName</td>
+      <td>英文名</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_OtherNames</td>
+      <td>其他名字</td>
+      <td><code class="highlighter-rouge">Array[String]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_Pictures</td>
+      <td>截图</td>
+      <td><code class="highlighter-rouge">Array[*File]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_Types</td>
+      <td>类型</td>
+      <td><code class="highlighter-rouge">Array[String]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="a-namemoviea-movie"><a name="movie"></a>电影 Movie</h2>
 
@@ -79,6 +147,13 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>_Item</td>
+      <td>对象</td>
+      <td><code class="highlighter-rouge">*Item</code></td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
     <tr>
       <td>_Actors</td>
       <td>演员表(人物: 角色)</td>
@@ -101,30 +176,9 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_ChineseName</td>
-      <td>中文电影名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>Yes</td>
-      <td>null</td>
-    </tr>
-    <tr>
       <td>_Countries</td>
       <td>国家</td>
       <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_CoverPicture</td>
-      <td>封面图</td>
-      <td><code class="highlighter-rouge">*File</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Description</td>
-      <td>描述</td>
-      <td><code class="highlighter-rouge">String</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -150,13 +204,6 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_EnglishName</td>
-      <td>英文电影名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td>_GlobalDebutDate</td>
       <td>全球首映日期</td>
       <td><code class="highlighter-rouge">Date</code></td>
@@ -167,20 +214,6 @@
       <td>_Languages</td>
       <td>语言</td>
       <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_OtherNames</td>
-      <td>其他名字</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Pictures</td>
-      <td>截图</td>
-      <td><code class="highlighter-rouge">Array[*File]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -202,13 +235,6 @@
       <td>_Trailer</td>
       <td>预告片</td>
       <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Types</td>
-      <td>类型</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -236,6 +262,13 @@
   </thead>
   <tbody>
     <tr>
+      <td>_Item</td>
+      <td>对象</td>
+      <td><code class="highlighter-rouge">*Item</code></td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>_Actors</td>
       <td>演员表(人物: 角色)</td>
       <td><code class="highlighter-rouge">Object{*Person: String}</code></td>
@@ -250,23 +283,9 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_ChineseName</td>
-      <td>中文剧名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>Yes</td>
-      <td>null</td>
-    </tr>
-    <tr>
       <td>_Countries</td>
       <td>国家</td>
       <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_CoverPicture</td>
-      <td>封面图</td>
-      <td><code class="highlighter-rouge">*File</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -292,37 +311,9 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_Description</td>
-      <td>描述</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td>_Director</td>
       <td>导演</td>
       <td><code class="highlighter-rouge">Array[*Person]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_EnglishName</td>
-      <td>英文剧名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_OtherNames</td>
-      <td>其他名字</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Pictures</td>
-      <td>截图</td>
-      <td><code class="highlighter-rouge">Array[*File]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -351,13 +342,6 @@
       <td>_Trailer</td>
       <td>预告片</td>
       <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Types</td>
-      <td>类型</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -385,6 +369,13 @@
   </thead>
   <tbody>
     <tr>
+      <td>_Item</td>
+      <td>对象</td>
+      <td><code class="highlighter-rouge">*Item</code></td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>_Actors</td>
       <td>声优(人物: 角色)</td>
       <td><code class="highlighter-rouge">Object{*Person: String}</code></td>
@@ -399,23 +390,9 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_ChineseName</td>
-      <td>中文动画名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>Yes</td>
-      <td>null</td>
-    </tr>
-    <tr>
       <td>_Countries</td>
       <td>国家</td>
       <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_CoverPicture</td>
-      <td>封面图</td>
-      <td><code class="highlighter-rouge">*File</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -441,37 +418,9 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_Description</td>
-      <td>描述</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td>_Director</td>
       <td>监督</td>
       <td><code class="highlighter-rouge">Array[*Person]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_EnglishName</td>
-      <td>英文动画名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_OtherNames</td>
-      <td>其他名字</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Pictures</td>
-      <td>截图</td>
-      <td><code class="highlighter-rouge">Array[*File]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -504,13 +453,6 @@
       <td> </td>
     </tr>
     <tr>
-      <td>_Types</td>
-      <td>类型</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td>_Writer</td>
       <td>脚本</td>
       <td><code class="highlighter-rouge">Array[*Person]</code></td>
@@ -534,51 +476,16 @@
   </thead>
   <tbody>
     <tr>
-      <td>_ChineseName</td>
-      <td>中文游戏名</td>
-      <td><code class="highlighter-rouge">String</code></td>
+      <td>_Item</td>
+      <td>对象</td>
+      <td><code class="highlighter-rouge">*Item</code></td>
       <td>Yes</td>
-      <td>null</td>
-    </tr>
-    <tr>
-      <td>_CoverPicture</td>
-      <td>封面图</td>
-      <td><code class="highlighter-rouge">*File</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Description</td>
-      <td>描述</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
       <td> </td>
     </tr>
     <tr>
       <td>_Distributor</td>
       <td>发行公司</td>
       <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_EnglishName</td>
-      <td>英文游戏名</td>
-      <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_OtherNames</td>
-      <td>其他名字</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Pictures</td>
-      <td>截图</td>
-      <td><code class="highlighter-rouge">Array[*File]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -614,13 +521,6 @@
       <td>_Trailer</td>
       <td>预告片</td>
       <td><code class="highlighter-rouge">String</code></td>
-      <td>No</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>_Types</td>
-      <td>类型</td>
-      <td><code class="highlighter-rouge">Array[String]</code></td>
       <td>No</td>
       <td> </td>
     </tr>
@@ -700,6 +600,157 @@
       <td>_Types</td>
       <td>身份</td>
       <td><code class="highlighter-rouge">Array[String]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="a-nameusera-user"><a name="user"></a>用户 User</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Explain</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>_LikedAnimations</td>
+      <td>喜欢的动画</td>
+      <td><code class="highlighter-rouge">Array[*Animation]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_LikedGames</td>
+      <td>喜欢的游戏</td>
+      <td><code class="highlighter-rouge">Array[*Game]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_LikedMovies</td>
+      <td>喜欢的电影</td>
+      <td><code class="highlighter-rouge">Array[*Movie]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_LikedPerson</td>
+      <td>喜欢的人物</td>
+      <td><code class="highlighter-rouge">Array[*Person]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_LikedTVSeries</td>
+      <td>喜欢的电视剧</td>
+      <td><code class="highlighter-rouge">Array[*TVSeries]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_PlayedGames</td>
+      <td>玩过的游戏</td>
+      <td><code class="highlighter-rouge">Array[*Game]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WantedAnimations</td>
+      <td>想看的动画</td>
+      <td><code class="highlighter-rouge">Array[*Animation]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WantedGames</td>
+      <td>想看的游戏</td>
+      <td><code class="highlighter-rouge">Array[*Game]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WantedMovies</td>
+      <td>想看的电影</td>
+      <td><code class="highlighter-rouge">Array[*Movie]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WantedTVSeries</td>
+      <td>想看的电视</td>
+      <td><code class="highlighter-rouge">Array[*TVSeries]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WatchedAnimations</td>
+      <td>看过的动画</td>
+      <td><code class="highlighter-rouge">Array[*Animation]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WatchedMovies</td>
+      <td>看过的电影</td>
+      <td><code class="highlighter-rouge">Array[*Movie]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_WatchedTVSeries</td>
+      <td>看过的电视</td>
+      <td><code class="highlighter-rouge">Array[*TVSeries]</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="a-namecommenta-comment"><a name="comment"></a>评论 Comment</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Explain</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>_Author</td>
+      <td>评论者</td>
+      <td><code class="highlighter-rouge">*User</code></td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_Content</td>
+      <td>评论内容</td>
+      <td><code class="highlighter-rouge">String</code></td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_Item</td>
+      <td>评论对象</td>
+      <td><code class="highlighter-rouge">*Item</code></td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>_Pictures</td>
+      <td>评论插图</td>
+      <td><code class="highlighter-rouge">*File</code></td>
       <td>No</td>
       <td> </td>
     </tr>
