@@ -6,9 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Happier
-email: junjchen90@yahoo.com
-description: Still roaming
+title: JunJie's blog
+email: chuckjunjchen@gmail.com
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
