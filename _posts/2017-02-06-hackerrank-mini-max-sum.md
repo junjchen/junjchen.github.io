@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hacker rank 解题笔记
+title: Hacker rank 解题笔记 - Mini-Max Sum
 ---
 
 # [Mini-Max Sum](https://www.hackerrank.com/challenges/mini-max-sum)
