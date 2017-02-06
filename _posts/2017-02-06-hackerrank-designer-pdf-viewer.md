@@ -3,7 +3,7 @@ layout: post
 title: Hacker rank 解题笔记 - Designer PDF Viewer
 ---
 
-# [DEsigner PDF Viewer]()
+# [Designer PDF Viewer](https://www.hackerrank.com/challenges/designer-pdf-viewer)
 
 思路：把词分切成字母，通过ord()得到字母"a"的ASCII码，并计算每个字母相对字母a的索引差，通过一次循环找出各字母对应的最大高度
 
