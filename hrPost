@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+
+import sys
+import datetime
+import os
+
+curr_dir = os.path.dirname(__file__)
+name_of_challenge = sys.argv[1]
+dashed_challenge_name = '-'.join(name_of_challenge.lower().split(' '))
+current_time_stamp = datetime.datetime.today().strftime('%Y-%m-%d')
+
+with open(os.path.join(curr_dir, '_posts/%s-%s.md'%(current_time_stamp, dashed_challenge_name)), 'w+') as f:
+    f.write('---\n')
+    f.write('layout: post\n')
+    f.write('title: Hacker rank 解题笔记 - %s\n'%(name_of_challenge))
+    f.write('---\n')
+    f.write('\n')
+    f.write('# [%s](https://www.hackerrank.com/challenges/%s)\n'%(name_of_challenge, dashed_challenge_name))
+    f.write('\n')
+    f.write('```')
+    f.write('\n')
+    f.write('```')
+    f.close()
